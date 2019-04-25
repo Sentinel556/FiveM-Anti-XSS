@@ -39,21 +39,3 @@ local function OnPlayerConnecting(name, setKickReason, deferrals)
 end
 
 AddEventHandler("playerConnecting", OnPlayerConnecting)
-
-AddEventHandler('_chat:messageEntered', function(author, color, message)
-    if not message or not author then
-        return
-    end
-
-	if not WasEventCanceled() and not inputSafe(author) or not inputSafe(message) then
-		local identifiers = GetPlayerIdentifiers(source)
-			
-		local ids = ''
-		for _, v in pairs(identifiers) do
-			local ids = ids..' '..v
-		end
-
-		logPlayer(name, ids)
-		return
-	end
-end)
